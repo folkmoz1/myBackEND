@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from './schema/typeDefs'
 import { resolvers } from './schema/resolver'
 
+const { FRONTEND_URI } = process.env
 
 const server = new ApolloServer({
     typeDefs,
@@ -12,7 +13,7 @@ const server = new ApolloServer({
 const app = express()
 const PORT = process.env.PORT || 5000
 
-server.applyMiddleware({ app, cors:{origin: "http://localhost:3000",optionsSuccessStatus:200} })
+server.applyMiddleware({ app, cors:{origin: FRONTEND_URI,optionsSuccessStatus:200} })
 
 
 app.listen({ port: PORT }, () =>
