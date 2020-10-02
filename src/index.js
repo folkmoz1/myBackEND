@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from './schema/typeDefs'
 import { resolvers } from './schema/resolver'
 
+const { FRONTEND_URI } = process.env
 
 const server = new ApolloServer({
     typeDefs,
