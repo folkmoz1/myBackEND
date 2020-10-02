@@ -9,10 +9,12 @@ const server = new ApolloServer({
     resolvers,
 })
 
+const { FRONTEND_URI } = process.env
+
 const app = express()
 const PORT = process.env.PORT || 5000
 
-server.applyMiddleware({ app, cors:{origin: "http://localhost:3000",optionsSuccessStatus:200} })
+server.applyMiddleware({ app, cors:{origin: FRONTEND_URI,optionsSuccessStatus:200} })
 
 
 app.listen({ port: PORT }, () =>
